@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Cette balise indique au navigateur que la page doit prendre
+       la largeur réelle de l'écran de l'appareil -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Évaluation Responsive Web Design | Audrey Brun</title>
+  <meta
+    name="description"
+    content="Page de présentation sur le viewport et les media queries dans le cadre du cours Web mobile."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="MaFeuilleDeStyle.css">
+</head>
+
+<body>
+  <a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="brand">
+        <img
+          src="image/LogoAbFormation.png"
+          alt="Logo AB Formation"
+          class="logo-ab"
+          width="88"
+          height="88"
+        >
+        <div class="brand-text">
+          <p class="brand-name">Cours Web mobile</p>
+          <p class="brand-subtitle">Évaluation responsive web design</p>
+          <p class="brand-subtitle">Concevoir une interface adaptative</p>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#contexte">Contexte</a></li>
+          <li><a href="#viewport">Viewport</a></li>
+          <li><a href="#mediaqueries">Media queries</a></li>
+          <li><a href="#codes">4 morceaux de code</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero hero-premium">
+      <div class="hero-background" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <p class="hero-kicker">WEB MOBILE • RESPONSIVE WEB DESIGN</p>
+        <h1>Comprendre le viewport et les media queries dans la conception d’un site responsive</h1>
+        <p class="hero-intro">
+          Cette page présente les principaux choix techniques mis en œuvre dans le cadre
+          de l’évaluation de responsive web design.
+        </p>
+        <p class="hero-meta">
+          Enseignant : Damien Bouchard<br>
+          Réalisé par : Audrey Brun
+        </p>
+      </div>
+    </section>
+
+    <section id="contexte" class="content-section">
+      <div class="container narrow">
+        <h2>Contexte du projet</h2>
+        <p>
+          Ce travail s’inscrit dans le cadre du cours Web mobile et porte sur la réalisation
+          d’un site responsive. L’objectif est de montrer comment une même page web peut
+          s’adapter à plusieurs formats d’écran, tout en conservant une bonne lisibilité,
+          une organisation cohérente des contenus et une expérience utilisateur satisfaisante.
+        </p>
+        <p>
+          Dans cette page, l’accent est mis sur deux éléments fondamentaux du responsive design :
+          la directive viewport et les media queries. Ces outils permettent d’ajuster
+          l’affichage selon l’appareil utilisé et de structurer une page capable de fonctionner
+          aussi bien sur smartphone que sur écran de bureau.
+        </p>
+      </div>
+    </section>
+
+    <section id="viewport" class="content-section alt-section">
+      <div class="container narrow">
+        <h2>Le viewport</h2>
+        <p>
+          Le viewport correspond à la zone visible de la page dans le navigateur.
+          Sur un téléphone mobile, cette zone doit être correctement définie pour que la page
+          s’affiche à la bonne échelle et ne soit pas réduite automatiquement.
+        </p>
+        <p>
+          La balise viewport permet au navigateur d’interpréter la largeur de l’écran
+          comme référence d’affichage. Grâce à elle, le site n’apparaît pas comme une version
+          miniature de la page bureau. Elle constitue donc une base essentielle pour rendre
+          un site lisible et exploitable sur mobile.
+        </p>
+      </div>
+    </section>
+
+    <section id="mediaqueries" class="content-section">
+      <div class="container narrow">
+        <h2>Les media queries</h2>
+        <p>
+          Les media queries sont des règles CSS conditionnelles qui permettent de modifier
+          la mise en page en fonction de la largeur de l’écran. Elles servent à adapter
+          l’organisation des blocs, la disposition des colonnes, la taille des images
+          ou encore l’espacement entre les éléments.
+        </p>
+        <p>
+          Dans une logique responsive, elles rendent possible une lecture plus confortable :
+          sur mobile, les contenus s’empilent généralement sur une seule colonne ; sur tablette
+          ou sur bureau, ils peuvent être répartis sur plusieurs colonnes afin d’utiliser
+          l’espace de manière plus efficace.
+        </p>
+      </div>
+    </section>
+
+    <section id="codes" class="content-section alt-section">
+      <div class="container">
+        <h2>Quatre morceaux de code commentés</h2>
+
+        <div class="code-grid">
+          <article class="code-card">
+            <h3>1. La balise viewport</h3>
+            <pre><code>&lt;!-- Le navigateur doit adapter la page à la largeur réelle de l’écran --&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <p><strong>Ce que fait le code :</strong> il indique au navigateur que la largeur de la page doit correspondre à celle de l’écran utilisé.</p>
+            <p><strong>Pourquoi il est utilisé :</strong> il évite que la page apparaisse trop petite sur smartphone.</p>
+            <p><strong>Effet sur mobile et bureau :</strong> sur mobile, le contenu est lisible dès l’ouverture ; sur bureau, l’affichage reste stable et cohérent.</p>
+          </article>
+
+          <article class="code-card">
+            <h3>2. Les images responsives</h3>
+            <pre><code>/* L’image devient un bloc */
+/* Elle ne dépasse jamais la largeur disponible */
+/* Sa hauteur s’adapte automatiquement */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+
+            <p><strong>Ce que fait le code :</strong> il empêche les images de dépasser leur conteneur et conserve leurs proportions.</p>
+            <p><strong>Pourquoi il est utilisé :</strong> il évite les débordements et améliore l’affichage sur petit écran.</p>
+            <p><strong>Effet sur mobile et bureau :</strong> sur mobile, l’image se réduit correctement ; sur bureau, elle garde une taille adaptée sans déformation.</p>
+          </article>
+
+          <article class="code-card">
+            <h3>3. La grille en une colonne par défaut</h3>
+            <pre><code>/* On utilise une grille pour organiser les cartes */
+/* Par défaut, il n’y a qu’une seule colonne */
+/* On laisse un espace entre les blocs */
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}</code></pre>
+
+            <p><strong>Ce que fait le code :</strong> il organise les cartes de contenu sur une seule colonne par défaut.</p>
+            <p><strong>Pourquoi il est utilisé :</strong> cette disposition est plus simple à lire sur mobile et s’inscrit dans une logique mobile-first.</p>
+            <p><strong>Effet sur mobile et bureau :</strong> sur mobile, les blocs s’empilent naturellement ; sur bureau, cette base pourra être modifiée par une media query.</p>
+          </article>
+
+          <article class="code-card">
+            <h3>4. La media query à partir de 768 px</h3>
+            <pre><code>/* Si l’écran mesure au moins 768 pixels de large */
+/* alors la grille passe de une à deux colonnes */
+@media screen and (min-width: 768px) {
+  .code-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}</code></pre>
+
+            <p><strong>Ce que fait le code :</strong> il modifie la grille lorsque l’écran atteint au moins 768 pixels de large.</p>
+            <p><strong>Pourquoi il est utilisé :</strong> il permet d’utiliser davantage l’espace disponible sur tablette et sur ordinateur.</p>
+            <p><strong>Effet sur mobile et bureau :</strong> sur mobile, les cartes restent empilées ; sur écran plus large, elles s’affichent en deux colonnes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusion" class="content-section">
+      <div class="container narrow">
+        <h2>Conclusion</h2>
+        <p>
+          Le viewport et les media queries sont deux outils essentiels du responsive design.
+          Le premier définit correctement l’espace d’affichage, tandis que les secondes permettent
+          d’ajuster la mise en page selon la largeur disponible.
+        </p>
+        <p>
+          Ensemble, ils garantissent une lecture plus fluide, une meilleure hiérarchie des contenus
+          et une navigation adaptée à tous les supports.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Projet pédagogique réalisé dans le cadre du cours Web mobile – Audrey Brun.</p>
+    </div>
+  </footer>
+</body>
+</html>

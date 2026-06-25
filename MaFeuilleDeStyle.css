@@ -1,0 +1,389 @@
+/* ==========================================
+   Évaluation Responsive Web Design
+   Audrey Brun
+   Version responsive avec exemples commentés
+   ========================================== */
+
+:root {
+  --color-bg: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fbfd;
+  --color-primary: #0f4c5c;
+  --color-secondary: #2f7e8a;
+  --color-accent: #5fb3b3;
+  --color-text: #1f2a33;
+  --color-text-light: #52616b;
+  --color-border: #d9e3ea;
+
+  --shadow-sm: 0 4px 12px rgba(19, 45, 58, 0.08);
+  --shadow-md: 0 12px 30px rgba(19, 45, 58, 0.10);
+
+  --radius: 18px;
+  --max-width: 1180px;
+  --max-width-narrow: 860px;
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --text-sm: clamp(0.875rem, 0.84rem + 0.2vw, 1rem);
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.4rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.3vw, 2.2rem);
+  --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.4rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+h2 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+}
+
+h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+pre,
+code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+pre {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  background-color: #f2f6f8;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.8rem 1rem;
+  z-index: 999;
+  border: 2px solid var(--color-primary);
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.container {
+  width: min(92%, var(--max-width));
+  margin: 0 auto;
+}
+
+.narrow {
+  max-width: var(--max-width-narrow);
+}
+
+.site-header {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+}
+
+.header-flex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.logo-ab {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-name {
+  margin: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.brand-subtitle {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.main-nav {
+  width: 100%;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav a {
+  display: block;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: center;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  background-color: #e7f1f3;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.hero-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  min-height: min(88vh, 760px);
+  display: flex;
+  align-items: center;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url("image/teamwork.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.78;
+  filter: brightness(0.92) contrast(1.05);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(248, 251, 253, 0.92) 0%,
+    rgba(248, 251, 253, 0.82) 45%,
+    rgba(248, 251, 253, 0.62) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-kicker {
+  margin-bottom: var(--space-4);
+  color: var(--color-secondary);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hero-intro {
+  font-size: clamp(1rem, 0.95rem + 0.7vw, 1.25rem);
+  color: #173a46;
+  max-width: 60ch;
+}
+
+.hero-meta {
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.content-section {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.alt-section {
+  background-color: var(--color-surface-soft);
+}
+
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.code-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 1.6rem;
+}
+
+.site-footer {
+  background-color: #0d2d38;
+  color: #ffffff;
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Écran légèrement plus large : le menu respire davantage */
+@media screen and (min-width: 480px) {
+  .main-nav ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablette : le header passe en ligne et la grille en 2 colonnes */
+@media screen and (min-width: 768px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .header-flex {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .logo-ab {
+    width: 80px;
+    height: 80px;
+  }
+
+  .main-nav {
+    width: auto;
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-3);
+  }
+
+  .main-nav a {
+    background-color: transparent;
+  }
+
+  .code-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Bureau : plus d’espace pour respirer */
+@media screen and (min-width: 1024px) {
+  .content-section {
+    padding: clamp(4rem, 7vw, 7rem) 0;
+  }
+
+  .hero-content {
+    max-width: 760px;
+  }
+}
+
+/* Très petits écrans : éléments légèrement réduits */
+@media screen and (max-width: 359px) {
+  .logo-ab {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-subtitle {
+    font-size: 0.82rem;
+  }
+
+  pre {
+    font-size: 0.85rem;
+  }
+}
